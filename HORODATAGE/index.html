@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="FR">
+	<head>
+		<meta charset="UTF-8">
+		<title>Horodatage Audiomoth</title>
+		<link rel="icon" type="image/png" href="../img/GMN.ico"/>
+    <link rel="stylesheet" href="../style/bootstrap.min.css">
+		<link rel="stylesheet" href="style/style.css">
+		<script src="scripts/fileSaver.js"> </script>
+		<script src="scripts/jquery.js"> </script>
+
+		<style>
+			@font-face
+			{
+				font-family: 'Quicksand';
+				src: url('../fonts/Quicksand-Regular.ttf');
+			}
+		</style>
+	</head>
+	<body class="container-fluid row my-4" style="background-color : #CCC1AF">
+
+		<div class="col-12 my-4 d-flex justify-content-start d-flex align-items-center">
+			<a class="m-0 d-none d-md-block" href='../index.html'> <img id="gmn" class="" src="../img/favicon.png" alt="" width="90px;"> </a>
+			<p class="fs-1 my-auto mx-2 align-middle" id="databat">HORODATAGE AUDIOMOTH</p>
+		</div>
+
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 my-2">
+			<form id="form" onsubmit="saveFile()">
+				<div class="form-group row">
+					<div class="file-drop-area col-xl-4 col-lg-4 col-md-4 col-sm-6">
+			  		<span class="choose-file-button">Choose files</span>
+			  		<span class="file-message">or "drag and drop" files here</span>
+			  		<input class="file-input" type="file" id="inputFile" multiple>
+					</div>
+
+					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 my-auto">
+						<button type="submit" class="btn btn-outline-dark my-2">CONVERTIR</button>
+						<button onclick="helpOpen()" class="btn btn-outline-dark my-2" type="button">MODE D'EMPLOI</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+		<div id="help_div" class="text-justify">
+			<p class="fs-6 fw-light my-2">
+				Cet outil vous permet d'horodater des fichiers d'ultrasons de chauve-souris capturés par AUDIOMOTH.
+				<br>
+				Chargez les fichiers dans le champ de saisie, et cliquez sur convertir. Les fichiers horodatés seront alors téléchargés dans votre navigateur.
+				<br>
+				Des questions ? Une demande ? Envoyez un mail au webmaster avec pour objet "Aide Horodatage Audiomtoth" à Hadrien.paris@icloud.com
+				<br>
+				Le code de ce site est disponible ici : https://github.com/HadPhazz/gmn_tools
+			</p>
+		</div>
+
+
+		<script>
+		$(document).on('change', '.file-input', function() {
+
+		var filesCount = $(this)[0].files.length;
+		var textbox = $(this).prev();
+		if (filesCount === 1) {
+			var fileName = $(this).val().split('\\').pop();
+			textbox.text(fileName);
+		}
+		else {
+			textbox.text(filesCount + ' files selected');
+		}
+		});
+
+		function helpOpen(){
+		  let div = document.getElementById("help_div");
+		    if (div.style.display === "block") {
+		      div.style.display = "none";
+		    }
+		    else {
+		      div.style.display = "block";
+		    }
+		}
+
+		function findDate() {
+			var currentdate = new Date();
+			var datetime = currentdate.getDate() + "/" + (currentdate.getMonth()+1)  + "/" + currentdate.getFullYear() + " @ " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+			return datetime;
+		}
+
+		function timestampCreation(){ // Rename a file with the current hexadecimal Unix timestamp
+			return hexUnixTimestamp = parseInt(Date.now()/1000).toString(16);
+		}
+
+		function hexToDec(unixTimestampHex){ // Convertion des timestamps unix HEXADECIAML en DECIMAL
+			return parseInt(unixTimestampHex, 16);
+		}
+
+		function timestampConversion(timestamp){ // timestap UNIX en heures_minutes_secondes
+			let date = new Date(timestamp * 1000);
+			let hours = date.getHours();
+			let minutes = "0" + date.getMinutes();
+			let seconds = "0" + date.getSeconds();
+			return formattedTime = hours + 'h' + minutes.substr(-2) + 'm' + seconds.substr(-2) + 's'; // Will display time in HH:MM:SS format with 11:07 and not 11:7
+		}
+
+		// On stocke dans le tableau les fichiers renommés (on prends le nom du fichier, on enlève l'extension, on converti le timestamp hexa en decimal, puis de décimal en heure réelle)
+		function saveFile() {
+			let inputFile = document.getElementById('inputFile').files;
+			let fileArray = []; // Tableau des fichiers
+			let convertedHexArray =[]; // Tableau des noms des fichiers HEX convertis en heure réelle
+			let convertedDecArray =[]; // Tableau des noms des fichiers DEC convertis en heure réelle
+			for (let i = 0; i < inputFile.length; i++){
+				fileArray.push(inputFile[i]); // On stocke les fichiers uploads dans un tableau
+				let fileName = inputFile[i].name.substr(0, inputFile[i].name.lastIndexOf('.')) || inputFile[i].name; // Création de la String contenant le nom du fichier moins l'entension
+				let fileExt = inputFile[i].name.split('.').pop(); // Extension du fichier
+				let fileType = inputFile[i].type; // Get fileType
+				let blob = inputFile[i].slice(0, inputFile[i].size, fileType); // Création du Binary Object
+
+				console.log(inputFile[i])
+				console.log("fileName : " + fileName + "\n" + "fileType : " + fileType + "\n" + "fileExt : " + fileExt);
+
+				if(fileName.length === 8){ // For HEX timestamp
+					convertedHexArray.push(timestampConversion(hexToDec(fileName)));
+					let horodatedHexFile = new File([blob], convertedHexArray[i]+'.'+fileExt, {type: fileType}); // Création du fichier en changeant le nom et en ne modifiant pas le contenu
+					console.log(horodatedHexFile);
+					saveAs(horodatedHexFile); // Fct de téléchargement du fichier
+				}
+				else if(fileName.length === 10){ // For DEC/Unix Epoch timestamp
+					convertedDecArray.push(timestampConversion(fileName));
+					let horodatedDecFile = new File([blob], convertedDecArray[i]+'.'+fileExt, {type: fileType}); // Création du fichier en changeant le nom et en ne modifiant pas le contenu
+					console.log(horodatedDecFile);
+					saveAs(horodatedDecFile); // Fct de téléchargement du fichier
+				}
+				else{
+					saveAs(inputFile[i]) // Si fichier ne comprenant pas 8 ou 10 digit, téléchargement du fichier uplaodé, sans modifications
+				}
+			}
+		}
+		</script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+
+html
+{
+	scroll-behavior: smooth;
+}
+
+*
+{
+	font-family: 'Quicksand';
+	color : #7D6B61;
+	text-decoration: none;
+}
+
+
+#img_div, #help_div{
+	display: none;
+}
+
+#bat
+{
+	width: 75px;
+}
+
+#gmn
+{
+	width: 150px;
+}
+
+.blackInput
+{
+	background-color: transparent;
+	color : #7D6B61;
+}
+
+.inputLabel, label
+{
+	color : #7D6B61;
+}
+
+hr {
+	border-top: 10px dotted #7D6B61;
+	background-color: transparent;
+}
+
+.form-control:focus, .form-select:focus
+{
+	border-color: #ffc107;
+  box-shadow: 0 0 0 0.2rem rgba(125, 107, 97, 0.25);
+}

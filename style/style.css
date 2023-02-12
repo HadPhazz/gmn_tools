@@ -1,0 +1,11 @@
+*
+{
+	scroll-behavior: smooth;
+}
+
+a, p
+{
+	font-family: 'Quicksand';
+	color : #7D6B61;
+	text-decoration: none;
+}

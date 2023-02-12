@@ -1,0 +1,1590 @@
+<!DOCTYPE HTML>
+<html lang="FR">
+	<head>
+		<meta charset="UTF-8">
+		<title>DataBat</title>
+		<link rel="icon" type="image/png" href="../img/favicon.ico"/>
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+		<link rel="stylesheet" href="style/style.css">
+		<script src="script/script.js"> </script>
+		<style>
+			@font-face
+			{
+				font-family: 'Quicksand';
+				src: url('../fonts/Quicksand-Medium.ttf');
+			}
+		</style>
+	</head>
+	<body class="container-fluid" style="background-color : #CCC1AF">
+
+			<form class="mb-4" id="form" onsubmit="fieldsVerification(); return false;">
+				<div class="form-group my-2 row">
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+					  <input type="text" id="ORIGINE" class="form-control blackInput" placeholder='ORGANISATION' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="ORIGINE">ORGANISATION</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="IDENTIFIANT" class="form-control blackInput" placeholder='IDENTIFIANT' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="IDENTIFIANT">IDENTIFIANT</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="OBSERVATEUR" class="form-control blackInput" placeholder='OBSERVATEUR' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="OBSERVATEUR">OBSERVATEUR</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="OBSERVATEUR2" class="form-control blackInput" placeholder='ACCOMPAGNANT(S)' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="OBSERVATEUR2">ACCOMPAGNANT(S)</label>
+					</div>
+				</div>
+				<p class="fs-6 mx-0 my-0">HORAIRES ⬇</p>
+				<div class="form-group my-2 row">
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-6 col-sm-12">
+					  <input type="text" id="HEURE_POSE_FILETS" class="form-control blackInput" placeholder='DEBUT CAPTURE' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="HEURE_POSE_FILETS">DEBUT CAPTURE</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-6 col-sm-12">
+						<input type="text" id="HEURE_ARRET_FILETS" class="form-control blackInput" placeholder='FIN CAPTURE' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="HEURE_ARRET_FILETS">FIN CAPTURE</label>
+					</div>
+				</div>
+				<p class="fs-6 mx-0 my-0">LOCALISATION ⬇</p>
+				<div class="form-group my-2 row">
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='BIOTOPE' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>BIOTOPE</option>
+							<option value="Bocage">Bocage</option>
+							<option value="Bois">Bois</option>
+							<option value="Clairière">Clairière</option>
+							<option value="Lisière de haie">Lisière de haie</option>
+							<option value="Abri sous roche">Abri sous roche</option>
+							<option value="Bosquet">Bosquet</option>
+							<option value="Culture">Culture (vigne, verger, ...)</option>
+							<option value="Cavité">Cavité</option>
+							<option value="Grotte">Grotte</option>
+							<option value="Mine">Mine</option>
+							<option value="Tunnel">Tunnel</option>
+							<option value="Pont">Pont</option>
+							<option value="Tourbière">Tourbière</option>
+							<option value="Allée forestière">Allée forestière</option>
+							<option value="Chemin">Chemin</option>
+							<option value="Parc">Parc</option>
+							<option value="Habitation">Habitation</option>
+							<option value="Jardin près habitation">Jardin près habitation</option>
+							<option value="Batiment">Batiment (Grange, ...)</option>
+							<option value="Batiment près habitation">Batiment près habitation</option>
+							<option value="Zone urbaine">Zone urbaine</option>
+							<option value="Bordure d’étang">Bordure d’étang</option>
+							<option value="Bordure de lac">Bordure de lac</option>
+							<option value="Cours d'eau">Cours d'eau</option>
+							<option value="Rivière">Rivière</option>
+							<option value="Bord de mer">Bord de mer</option>
+							<option value="Falaise">Falaise</option>
+							<option value="Autre">Autre, à préciser</option>
+						</select>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+					  <input type="text" id="LIEU_DIT" class="form-control blackInput" placeholder='LIEU DIT' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="LIEU_DIT">LIEU DIT</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="COMMUNE" class="form-control blackInput" placeholder='COMMUNE' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="COMMUNE">COMMUNE</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="DEPARTEMENT" class="form-control blackInput" placeholder='DEPARTEMENT' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="DEPARTEMENT">DEPARTEMENT</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="REGION" class="form-control blackInput" placeholder='REGION' style="background: transparent; color : #7D6B61;"/>
+					  <label class="form-label inputLabel mx-2"  for="REGION">REGION</label>
+					</div>
+				</div>
+				<p class="fs-6 mx-0 my-0">DONNEES METEOROLOGIQUES ⬇</p>
+				<div class="form-group my-2 row">
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='METEO' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>METEO</option>
+							<option value="Beau">Beau</option>
+							<option value="Couvert">Couvert</option>
+							<option value="Orageux">Orageux</option>
+							<option value="Averses">Averses</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='NEBULOSITE' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>NEBULOSITE</option>
+						  <option value="Nulle">Nulle</option>
+						  <option value="Basse">Basse</option>
+						  <option value="Moyenne">Moyenne</option>
+						  <option value="Elevée">Elevée</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='VENT' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>VENT</option>
+							<option value="Nul">Nul</option>
+							<option value="Faible">Faible</option>
+							<option value="Modéré">Modéré</option>
+							<option value="Fort">Fort</option>
+							<option value="Autre">Autre</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='HYGROMETRIE' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>HYGROMETRIE</option>
+							<option value="<40%"> < 40% </option>
+							<option value="40%-60%"> 40% < x < 60% </option>
+							<option value="60%-75%"> 60% < x < 75% </option>
+							<option value=">75%"> > 75% </option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='LUNE' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>LUNE</option>
+							<option value="Nouvelle lune">Nouvelle lune</option>
+							<option value="Croissant">Croissant</option>
+							<option value="Quartier">Quartier</option>
+							<option value="Gibbeuse">Gibbeuse</option>
+							<option value="Pleine lune">Pleine lune</option>
+						</select>
+					</div>
+				</div>
+				<p class="fs-6 mx-0 my-0">DONNES CAPTURE ⬇</p>
+				<div class="form-group my-2 row">
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='NB_FILETS' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>NOMBRE FILETS</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11 et +">11 et +</option>
+						</select>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="LONG_FILETS" class="form-control blackInput" placeholder='LONGUEUR FILETS' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="LONG_FILETS">LONGUEUR FILETS</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="SURFACE_FILETS" class="form-control blackInput" placeholder='SURFACE FILETS' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="SURFACE_FILETS">SURFACE FILETS</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="CONTEXTE_CAPTURE" class="form-control blackInput" placeholder='CONTEXTE CAPTURE' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="CONTEXTE_CAPTURE">CONTEXTE CAPTURE</label>
+					</div>
+
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='TEMPERATURE' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>TEMPERATURE</option>
+							<option value="< 10°"> < 10° </option>
+							<option value="10°-12°"> 10° < x < 12° </option>
+							<option value="13°-15°"> 13° < x < 15° </option>
+							<option value="> 15°"> > 15° </option>
+						</select>
+					</div>
+				</div>
+				<hr size="10" class="my-3 col-12">
+				<p class="fs-6 mx-0 my-0">DONNEES INDIVIDU ⬇</p>
+				<div class="form-group my-2 row">
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-auto">
+						<select id='TAXON' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="TAXON">TAXON</option>
+							<option value="BAR BAR">BAR BAR</option>
+							<option value="EPT NIL">EPT NIL</option>
+							<option value="EPT SER">EPT SER</option>
+							<option value="HYP SAV">HYP SAV</option>
+							<option value="MIN SCH">MIN SCH</option>
+							<option value="MYO ALC">MYO ALC</option>
+							<option value="MYO BEC">MYO BEC</option>
+							<option value="MYO BLY">MYO BLY</option>
+							<option value="MYO BRA">MYO BRA</option>
+							<option value="MYO CAP">MYO CAP</option>
+							<option value="MYO DAS">MYO DAS</option>
+							<option value="MYO DAU">MYO DAU</option>
+							<option value="MYO EMA">MYO EMA</option>
+							<option value="MYO ESC">MYO ESC</option>
+							<option value="MYO MYO">MYO MYO</option>
+							<option value="MYO MYS">MYO MYS</option>
+							<option value="MYO NAT">MYO NAT</option>
+							<option value="MYO PUN">MYO PUN</option>
+							<option value="MYO SPA">MYO SPA</option>
+							<option value="MYO SPC">MYO SPC</option>
+							<option value="NYC LAS">NYC LAS</option>
+							<option value="NYC LEI">NYC LEI</option>
+							<option value="NYC NOC">NYC NOC</option>
+							<option value="PIP KUH">PIP KUH</option>
+							<option value="PIP NAT">PIP NAT</option>
+							<option value="PIP PIP">PIP PIP</option>
+							<option value="PIP PYG">PIP PYG</option>
+							<option value="PLE AUR">PLE AUR</option>
+							<option value="PLE AUS">PLE AUS</option>
+							<option value="PLE MAC">PLE MAC</option>
+							<option value="RHI EUR">RHI EUR</option>
+							<option value="RHI FER">RHI FER</option>
+							<option value="RHI HIP">RHI HIP</option>
+							<option value="RHI MEH">RHI MEH</option>
+							<option value="TAD TEN">TAD TEN</option>
+							<option value="VES MUR">VES MUR</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-auto">
+						<select id='SEXE' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="M">SEXE : MÂLE</option>
+							<option value="F">SEXE : FEMELLE</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-auto">
+						<select id='AGE' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>AGE</option>
+							<option value="J">J - Juvénile</option>
+							<option value="SAD">SAD - Subadulte</option>
+							<option value="AD">AD - Adulte</option>
+						</select>
+					</div>
+					<div class="form-outline form-floating form-white my-auto col-xl-2 col-lg-2 col-md-3 col-sm-12">
+						<input type="text" id="MASSE" class="form-control blackInput" placeholder='MASSE - x.y (g)' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="MASSE">MASSE (g)</label>
+					</div>
+				</div>
+				<p class="fs-6 mx-0 my-0">MESURES (mm) ⬇</p>
+				<div class="form-group my-2 row">
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="AB" class="form-control blackInput" placeholder='AB' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="AB">AB</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="D5" class="form-control blackInput" placeholder='D5' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="D5">D5</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="D3" class="form-control blackInput" placeholder='D3' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="D3">D3</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="D1" class="form-control blackInput" placeholder='D1' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="D1">D1</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="CM3" class="form-control blackInput" placeholder='CM3' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="CM3">CM3</label>
+					</div>
+				</div>
+				<div class="form-group my-2 row">
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="POUCE" class="form-control blackInput" placeholder='POUCE' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="POUCE">POUCE</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="QUEUE" class="form-control blackInput" placeholder='QUEUE' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="QUEUE">QUEUE</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="TIBIA" class="form-control blackInput" placeholder='TIBIA' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="TIBIA">TIBIA</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="PIED" class="form-control blackInput" placeholder='PIED' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="PIED">PIED</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="GRIFFE" class="form-control blackInput" placeholder='GRIFFE' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="GRIFFE">GRIFFE</label>
+					</div>
+				</div>
+				<div class="form-group my-2 row">
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="LONG_OREILLE" class="form-control blackInput" placeholder='LONG OREILLE' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="LONG_OREILLE">LONG OREILLE</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="LARG_OREILLE" class="form-control blackInput" placeholder='LARG OREILLE' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="LARG_OREILLE">LARG OREILLE</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="LONG_TRAGUS" class="form-control blackInput" placeholder='LONG TRAGUS' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="LONG_TRAGUS">LONG TRAGUS</label>
+					</div>
+					<div class="form-outline form-floating form-white my-1 col-xl-2 col-lg-2 col-md-2 col-sm-12">
+						<input type="text" id="LARG_TRAGUS" class="form-control blackInput" placeholder='LARG TRAGUS' style="background: transparent; color : #7D6B61;"/>
+						<label class="form-label inputLabel mx-2"  for="LARG_TRAGUS">LARG TRAGUS</label>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='METHODE_DOIGTS' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected>METHODE DOIGTS</option>
+							<option value="Réglet avec butée">Réglet avec butée</option>
+							<option value="Réglet sans butée">Réglet sans butée</option>
+							<option value="Pied à coulisse">Pied à coulisse</option>
+						</select>
+					</div>
+				</div>
+				<p class="fs-6 mx-0 my-0">OBSERVATIONS ⬇</p>
+				<div class="form-group my-2 row">
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='TEST' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">TESTICULES</option>
+							<option value="T0">T0 - Invisibles</option>
+							<option value="T1">T1 - Gonflées</option>
+							<option value="T2">T2 - Très gonflées</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='EPID' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">EPIDIDYMES</option>
+							<option value="E0">E0 - Non gonflés</option>
+							<option value="E1">E1 - Gonflés</option>
+							<option value="E2">E2 - Très gonflés</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='TV' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">TUNIQUE VAGINALE</option>
+							<option value="S">S- Sombre/Noire</option>
+							<option value="B">B - Bicolore</option>
+							<option value="C">C- Claire/Diffuse</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='TAILLE_GLANDES' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">TAILLE GLANDES</option>
+							<option value="GD0">GD0 - Non visibles</option>
+							<option value="GD1">GD1 - Apparentes</option>
+							<option value="GD2">GD2 - Proéminentes</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='COULEUR_GLANDES' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">COULEUR GLANDES</option>
+							<option value="W">W -Blanches</option>
+							<option value="P">P - Roses</option>
+							<option value="O">O - Oranges</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group my-2 row">
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='GESTATION' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">GESTATION</option>
+							<option value="G?">G? - Probablement gestante</option>
+							<option value="G">G - Gestante</option>
+							<option value="NG">NG - Probablement non-gestante</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='MAMELLES' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">MAMELLES</option>
+							<option value="M0">M0</option>
+							<option value="M1">M1</option>
+							<option value="M2">M2</option>
+							<option value="M3">M3</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='EPIPH' class="py-3 px-1 form-select" style="background: transparent; color : #7D6B61;">
+							<option selected value="">EPIPHYSES</option>
+							<option value="F0">F0 - Pas de fusion</option>
+							<option value="F1">F1 - Fusion en cours</option>
+							<option value="F2">F2 - Fusion terminée</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='USURE_DENTS' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">USURE_DENTS</option>
+							<option value="U0">U0 - Très pointues</option>
+							<option value="U1">U1 - Pointues</option>
+							<option value="U2">U2 - Limées</option>
+						</select>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 my-1">
+						<select id='CHIN_SPOT' class="py-3 px-1 form-select " style="background: transparent; color : #7D6B61;">
+							<option selected value="">CHIN SPOT</option>
+							<option value="C0">C0 - Non visible</option>
+							<option value="C1">C1 - Peu visible</option>
+							<option value="C2">C2 - Bien visible</option>
+						</select>
+					</div>
+				</div>
+
+        <div class="form-group my-2 row mx-auto">
+          <div class="form-check col-xl-2 col-lg-3 col-md-3 col-sm-12">
+            <label for="BLESSURES">BLESSURES</label>
+            <input type="checkbox" id="BLESSURES" class="form-check-input">
+          </div>
+          <div class="form-check col-xl-2 col-lg-3 col-md-3 col-sm-12">
+            <label for="MARQUAGES">MARQUAGES</label>
+            <input type="checkbox" id="MARQUAGES" class="form-check-input">
+          </div>
+        </div>
+        <div class="form-group my-2 row mx-auto">
+          <div class="form-check col-xl-2 col-lg-2 col-md-2 col-sm-12">
+            <label for="PARASITES">PARASITES</label>
+            <input type="checkbox" id="PARASITES" class="form-check-input">
+          </div>
+          <div class="form-check col-xl-2 col-lg-2 col-md-2 col-sm-12">
+            <label for="PUCES">PUCES</label>
+            <input type="checkbox" id="PUCES" class="form-check-input">
+          </div>
+          <div class="form-check col-xl-2 col-lg-2 col-md-2 col-sm-12">
+            <label for="TIQUES">TIQUES</label>
+            <input type="checkbox" id="TIQUES" class="form-check-input">
+          </div>
+          <div class="form-check col-xl-2 col-lg-2 col-md-2 col-sm-12">
+            <label for="ACARIENS">ACARIENS</label>
+            <input type="checkbox" id="ACARIENS" class="form-check-input">
+          </div>
+          <div class="form-check col-xl-2 col-lg-2 col-md-2 col-sm-12">
+            <label for="NYCT">NYCT</label>
+            <input type="checkbox" id="NYCT" class="form-check-input">
+          </div>
+          <div class="form-check col-xl-2 col-lg-2 col-md-2 col-sm-12">
+            <label for="CIMEX">CIMEX</label>
+            <input type="checkbox" id="CIMEX" class="form-check-input">
+          </div>
+        </div>
+				<p class="fs-6 mx-0 my-0">COMMENTAIRES ⬇</p>
+				<div class="row my-2">
+					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+						<textarea class="form-control" style="background: transparent; color : #7D6B61;" id="COMMENT"></textarea>
+					</div>
+					<div class="my-auto col-xl-6 col-lg-6 col-md-12 col-sm-12">
+						<button type="submit" class="btn btn-outline-dark mx-2 my-1">ENREGISTRER</button>
+						<button id="dark_mode_button" onclick="imageOpen()" class="btn btn-outline-dark mx-2 my-1" type="button">GRILLE DES VALEURS</button>
+						<button id="dark_mode_button" onclick="helpOpen()" class="btn btn-outline-dark mx-2 my-1" type="button">MODE D'EMPLOI</button>
+					</div>
+				</div>
+      </form>
+
+			<div id="img_div" class="text-center">
+				<img id="image" class="mx-auto" src="img/1.png" width="80%" alt="Grille de valeurs">
+				<img id="image" class="mx-auto" src="img/2.png" width="80%" alt="Grille de valeurs">
+				<img id="image" class="mx-auto" src="img/3.png" width="80%" alt="Grille de valeurs">
+			</div>
+
+			<div id="help_div" class="text-justify">
+				<p class="fs-6 text-dark my-2">
+					Ce site doit être utilisé avec Mozilla Firefox, afin de faire fonctionner la persistance des données du formulaire.
+					<br>
+					Pensez à actualiser la page (touche F5) avant de cliquer sur le bouton "ENREGISTRER" via Mozilla, les données saisies ne seront pas effacées.
+					<br>
+					Plusieurs niveaux de detection d'erreurs sont mis en place sur ce site, il faut obligatoirement renseigner le TAXON et le MASSE de la chauve-souris capturée. Pensez de plus à bien rensigner le sexe du chiroptère.
+					<br>
+					Si des erreurs sont détectées, dans les champs MASSE, AB, CM3, D5, D3 et D1, une alerte apparaîtra au milieu de l'écran vous indiquant quelle valeur est hors-borne.
+					<br>
+					Vous pouvez forcer le passage de la valeur,  même si cette dernière est hors-bornes, via l'alerte au milieu de l'écran.
+					<br>
+					Ce système de détection d'erreurs est aussi actif pour les données relatives au sexe de l'individu, si des champs reservés aux mâles sont remplis alors que l'individu est une femelle, une erreur l'indiquera, et vice-versa pour les femelles.
+					<br>
+					Une fois les données saisies et la page actualisée, vous pouvez enregistrer le formulaire, un fichier text (.txt) va alors se télécharger dans votre navigateur.
+					<br>
+					Ce fichier horodaté contient les informations saisies, relatives à la capture de la chauve-souris.
+					<br>
+					Pour toute demande relative ce site, n'hésitez pas à contacter le webmaster : Hadrien.paris@icloud.com avec "Demande DataBat" en objet de mail, avec vos coordonnées dans le corps de mail.
+					<br>
+					Le code de ce site est disponible ici : https://github.com/HadPhazz/gmn_tools
+				</p>
+			</div>
+
+		<script>
+		let ORIGINE = document.getElementById("ORIGINE").value;
+		let IDENTIFIANT = document.getElementById("IDENTIFIANT").value;
+		let OBSERVATEUR = document.getElementById("OBSERVATEUR").value;
+		let OBSERVATEUR2 = document.getElementById("OBSERVATEUR2").value;
+		let LIEU_DIT = document.getElementById("LIEU_DIT").value;
+		let COMMUNE = document.getElementById("COMMUNE").value;
+		let DEPARTEMENT = document.getElementById("DEPARTEMENT").value;
+		let REGION = document.getElementById("REGION").value;
+		let METEO = document.getElementById("METEO").value;
+		let VENT = document.getElementById("VENT").value;
+		let BIOTOPE = document.getElementById("BIOTOPE").value;
+		let TEMPERATURE = document.getElementById("TEMPERATURE").value;
+		let LUNE = document.getElementById("LUNE").value;
+		let HYGROMETRIE = document.getElementById("HYGROMETRIE").value;
+		let NEBULOSITE = document.getElementById("NEBULOSITE").value;
+		let CONTEXTE_CAPTURE = document.getElementById("CONTEXTE_CAPTURE").value;
+		let SEXE = document.getElementById("SEXE").value;
+		let AGE = document.getElementById("AGE").value;
+		let TAXON = document.getElementById("TAXON").value;
+		let D1 = document.getElementById("D1").value;
+		let AB = document.getElementById("AB").value;
+		let D3 = document.getElementById("D3").value;
+		let D5 = document.getElementById("D5").value;
+		let METHODE_DOIGTS = document.getElementById("METHODE_DOIGTS").value;
+		let POUCE = document.getElementById("POUCE").value;
+		let MASSE = document.getElementById("MASSE").value;
+		let QUEUE = document.getElementById("QUEUE").value;
+		let TIBIA = document.getElementById("TIBIA").value;
+		let PIED = document.getElementById("PIED").value;
+		let LONG_OREILLE = document.getElementById("LONG_OREILLE").value;
+		let LARG_OREILLE = document.getElementById("LARG_OREILLE").value;
+		let LONG_TRAGUS = document.getElementById("LONG_TRAGUS").value;
+		let LARG_TRAGUS = document.getElementById("LARG_TRAGUS").value;
+		let GRIFFE = document.getElementById("GRIFFE").value;
+		let CM3 = document.getElementById("CM3").value;
+		let GESTATION = document.getElementById("GESTATION").value;
+		let MAMELLES = document.getElementById("MAMELLES").value;
+		let CHIN_SPOT = document.getElementById("CHIN_SPOT").value;
+		let TAILLE_GLANDES = document.getElementById("TAILLE_GLANDES").value;
+		let COULEUR_GLANDES = document.getElementById("COULEUR_GLANDES").value;
+		let USURE_DENTS = document.getElementById("USURE_DENTS").value;
+		let HEURE_POSE_FILETS = document.getElementById("HEURE_POSE_FILETS").value;
+		let HEURE_ARRET_FILETS = document.getElementById("HEURE_ARRET_FILETS").value;
+		let NB_FILETS = document.getElementById("NB_FILETS").value;
+		let LONG_FILETS = document.getElementById("LONG_FILETS").value;
+		let SURFACE_FILETS = document.getElementById("SURFACE_FILETS").value;
+		let TEST = document.getElementById("TEST").value;
+		let TV = document.getElementById("TV").value;
+		let EPIPH = document.getElementById("EPIPH").value;
+		let EPID = document.getElementById("EPID").value;
+		let BLESSURES = document.getElementById("BLESSURES").checked;
+		let MARQUAGES = document.getElementById("MARQUAGES").checked;
+		let PARASITES = document.getElementById("PARASITES").checked;
+		let PUCES = document.getElementById("PUCES").checked;
+		let TIQUES = document.getElementById("TIQUES").checked;
+		let ACARIENS = document.getElementById("ACARIENS").checked;
+		let NYCT = document.getElementById("NYCT").checked;
+		let CIMEX = document.getElementById("CIMEX").checked;
+		let COMMENT = document.getElementById("COMMENT").value;
+
+		function fieldsVerification(){
+			if(TAXON == "PIP PIP"){
+				if(MASSE < 3.0 || MASSE > 8.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 29.2 || AB > 32.8){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 36.6 || D5 > 43.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 50.0 || D3 > 59.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else if(SEXE == "F"){
+						if(AB < 29.8 || AB > 33.6){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 38.0 || D5 > 44.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 51.0 || D3 > 59.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "PIP PYG"){
+				if(MASSE < 3.2 || MASSE > 8.2){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 28.1 || AB > 32.7){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 36.4 || D5 > 45.9){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 50.4 || D3 > 55.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 29.4 || AB > 33.2){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 36.3 || D5 > 44.3){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 46.8 || D3 > 58.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "PIP KUH"){
+				if(MASSE < 3.0 || MASSE > 10.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 30.1 || AB > 35.5){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 38.5 || D5 > 48.6){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 52.0 || D3 > 64.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 31.4 || AB > 36.6){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 40.4 || D5 > 50.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 54.0 || D3 > 66.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "PIP NAT"){
+				if(MASSE < 3.8 || MASSE > 11.4){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 31.9 || AB > 35.4){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 41.9 || D5 > 48.6){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 56.6 || D3 > 64.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 32.0 || AB > 36.4){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 42.2 || D5 > 50.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 56.1 || D3 > 67.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+
+			else if(TAXON == "PLE AUR"){
+				if(MASSE < 5.5 || MASSE > 12.5){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 36.2 || AB > 41.0){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 48.0 || D5 > 55.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 60.0 || D3 > 69.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(D1 < 5.8 || D1 > 8.3){
+							errorGenerator(TAXON, SEXE, "D1");
+						}
+						else if(TIBIA < 17.2 || TIBIA > 20.9){
+							errorGenerator(TAXON, SEXE, "TIBIA");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 36.8 || AB > 42.1){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 49.0 || D5 > 57.2){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 62.0 || D3 > 73.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(D1 < 5.8 || D1 > 8.3){
+							errorGenerator(TAXON, SEXE, "D1");
+						}
+						else if(TIBIA < 17.2 || TIBIA > 21.0){
+							errorGenerator(TAXON, SEXE, "TIBIA");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "PLE AUS"){
+				if(MASSE < 5.0 || MASSE > 16.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 37.2 || AB > 41.5){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 50.0 || D5 > 63.7){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 63.0 || D3 > 74.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(D1 < 4.6 || D1 > 7.5){
+							errorGenerator(TAXON, SEXE, "D1");
+						}
+						else if(TIBIA < 16.9 || TIBIA > 19.8){
+							errorGenerator(TAXON, SEXE, "TIBIA");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 38.5 || AB > 42.5){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 50.0 || D5 > 58.1){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 63.0 || D3 > 75.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(D1 < 4.9 || D1 > 7.0){
+							errorGenerator(TAXON, SEXE, "D1");
+						}
+						else if(TIBIA < 17.8 || TIBIA > 20.2){
+							errorGenerator(TAXON, SEXE, "TIBIA");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+
+			else if(TAXON == "BAR BAR"){
+				if(MASSE < 5.0 || MASSE > 13.8){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 36.9 || AB > 40.6){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 49.2 || D5 > 57.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 65.0 || D3 > 74.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 37.9 || AB > 32.0){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 51.0 || D5 > 58.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 68.0 || D3 > 77.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+
+			else if(TAXON == "EPT SER"){
+				if(MASSE < 15.0 || MASSE > 40.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 48.1 || AB > 54.2){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 58.0 || D5 > 72.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 78.5 || D3 > 97.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 50.2 || AB > 56.0){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 61.0 || D5 > 72.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 81.4 || D3 > 99.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+
+			else if(TAXON == "VES MUR"){
+				if(MASSE < 1.0 || MASSE > 20.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 41.7 || AB > 47.2){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 52.3 || D5 > 56.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 73.3 || D3 > 77.9){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 41.7 || AB > 47.2){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 52.3 || D5 > 56.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 73.3 || D3 > 77.9){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+
+			else if(TAXON == "MYO MYS"){
+				if(MASSE < 3.0 || MASSE > 9.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 31.9 || AB > 36.1){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 39.9 || D5 > 48.8){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 51.0 || D3 > 60.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TIBIA < 14.6 || TIBIA > 17.6){
+							errorGenerator(TAXON, SEXE, "TIBIA");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 32.2 || AB > 36.6){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 41.0 || D5 > 49.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 51.0 || D3 > 60.5){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TIBIA < 14.9 || TIBIA > 17.5){
+							errorGenerator(TAXON, SEXE, "TIBIA");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "MYO ALC"){
+				if(MASSE < 3.0 || MASSE > 8.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 30.4 || AB > 33.5){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 39.0 || D5 > 48.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 49.1 || D3 > 56.7){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TIBIA < 13.6 || TIBIA > 15.9){
+							errorGenerator(TAXON, SEXE, "TIBIA");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 30.6 || AB > 33.6){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 39.0 || D5 > 48.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 49.2 || D3 > 57.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TIBIA < 13.7 || TIBIA > 15.9){
+							errorGenerator(TAXON, SEXE, "TIBIA");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "MYO MYO"){
+				if(MASSE < 20.0 || MASSE > 45.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 55.8 || AB > 63.2){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 72.0 || D5 > 85.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 91.1 || D3 > 107.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(CM3 < 8.9 || CM3 > 10.4){
+							errorGenerator(TAXON, SEXE, "CM3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 58.0 || AB > 65.7){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 76.0 || D5 > 89.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 88.0 || D3 > 112.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(CM3 < 9.0 || CM3 > 10.6){
+							errorGenerator(TAXON, SEXE, "CM3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "MYO DAU"){
+				if(MASSE < 5.0 || MASSE > 14.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 34.8 || AB > 39.3){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 45.0 || D5 > 54.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 58.0 || D3 > 66.1){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 35.3 || AB > 40.0){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 46.0 || D5 > 55.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 57.3 || D3 > 67.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "MYO NAT"){
+				if(MASSE < 3.8 || MASSE > 10.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 36.4 || AB > 41.2){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 49.0 || D5 > 58.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 63.0 || D3 > 74.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 36.2 || AB > 41.7){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 48.0 || D5 > 58.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 59.3 || D3 >75.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "MYO EMA"){
+				if(MASSE < 4.5 || MASSE > 13.5){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 36.0 || AB > 40.3){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 50.0 || D5 > 57.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 60.5 || D3 > 69.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 37.1 || AB > 42.2){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 52.0 || D5 > 60.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 64.0 || D3 > 72.6){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "MYO BEC"){
+				if(MASSE < 6.3 || MASSE > 17.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 38.4 || AB > 43.7){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 50.0 || D5 > 58.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 62.0 || D3 > 71.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 40.3 || AB > 44.5){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 52.0 || D5 > 60.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 64.0 || D3 > 73.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+
+			else if(TAXON == "NYC NOC"){
+				if(MASSE < 8.0 || MASSE > 50.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 43.5 || AB > 55.9){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 56.2 || D5 > 61.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 89.9 || D3 > 95.5){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 51.6 || AB > 56.8){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 58.0 || D5 > 62.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 94.0 || D3 > 100.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "NYC LEI"){
+				if(MASSE < 10.0 || MASSE > 24.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 40.5 || AB > 45.0){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 44.1 || D5 > 52.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 71.8 || D3 > 82.1){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 41.0 || AB > 45.9){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 45.1 || D5 > 64.5){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 69.5 || D3 > 82.6){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+
+			else if(TAXON == "RHI FER"){
+				if(MASSE < 10.0 || MASSE > 38.0){
+					errorGenerator(TAXON, SEXE, "MASSE");
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 52.5 || AB > 58.4){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 57.0 || D5 > 75.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 81.0 || D3 > 92.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 52.5 || AB > 58.7){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 67.0 || D5 > 77.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 83.0 || D3 > 94.0){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+			else if(TAXON == "RHI HIP"){
+				if(MASSE < 3.4 || MASSE > 9.2){
+					errorGenerator(TAXON, SEXE, "MASSE");
+				}
+				else{
+					if(SEXE == "M"){
+						if(AB < 35.5 || AB > 39.5){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 45.0 || D5 > 54.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 52.4 || D3 > 61.4){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(MAMELLES != "" || GESTATION != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux femelles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					if(SEXE == "F"){
+						if(AB < 36.2 || AB > 40.5){
+							errorGenerator(TAXON, SEXE, "AB");
+						}
+						else if(D5 < 47.1 || D5 > 57.0){
+							errorGenerator(TAXON, SEXE, "D5");
+						}
+						else if(D3 < 53.5 || D3 > 63.6){
+							errorGenerator(TAXON, SEXE, "D3");
+						}
+						else if(TEST != "" || EPID != "" || TV != ""){
+							errorGenerator(TAXON, SEXE, "Données relatives aux mâles rentrées par erreur");
+						}
+						else{
+							saveFile();
+						}
+					}
+					else{
+						console.log("Si le fichier n'est pas téléchargé, une erreur est présente dans le formulaire");
+					}
+				}
+			}
+
+			else{
+				window.alert("VEUILLEZ RENSEIGNER LE TAXON DE L'INDIVIDU");
+			}
+		} // Fin fct fieldsVerification()
+
+		function saveFile(){
+			if(SEXE == "M")
+		    SEXE = "Mâle";
+		  else if(SEXE == "F")
+		    SEXE = 'Femelle';
+			let today = new Date();
+			let date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+			let time = today.getHours() + "h" + today.getMinutes();
+			let record =
+				"----------------------------------------------------------------------------" + "\n" +
+				"Enregistrement effectué le " + date + " à " + time + "." + "\n" +
+				"----------------------------------------------------------------------------" + "\n" +
+				"Organisation : " + ORIGINE + ", Identifiant : " + IDENTIFIANT + "\n" +
+				"Observateur principal : " + OBSERVATEUR + "\n" +
+				"Accompagnant(s) : " + OBSERVATEUR2 + "\n" +
+				"----------------------------------------------------------------------------" + "\n" +
+				"Localisation de la capture : " + LIEU_DIT + ", " + COMMUNE + ", " + DEPARTEMENT + ", " + REGION + ".\n" +
+				"Biotope : " + BIOTOPE + "\n" +
+				"----------------------------------------------------------------------------" + "\n" +
+				"Contexte de la capture : " + CONTEXTE_CAPTURE + "\n" +
+				"Capture effectuée de " + HEURE_POSE_FILETS + " à " + HEURE_ARRET_FILETS + "\n" +
+				"Nombre filets : " + NB_FILETS + ", longueur filets : " + LONG_FILETS + " m, surface filets : " + SURFACE_FILETS + " m2. \n" +
+				"METEO : " + METEO + " , VENT : " + VENT + "\n" +
+				"TEMPERATURE : " + TEMPERATURE + ", LUNE : " + LUNE + "\n" +
+				"NEBULOSITE : " + NEBULOSITE + " , HYGROMETRIE : " + HYGROMETRIE + "\n" +
+				"----------------------------------------------------------------------------" + "\n" +
+				"Données de l'individu : " + TAXON + ' ' + SEXE + "\n" +
+				"----------------------------------------------------------------------------" + "\n" +
+				"--> Mesures \n" +
+				"MASSE : " + MASSE + ' g \n' +
+				"Age : " + AGE + "\n" +
+				"Avant-bras : " + AB + " mm \n" +
+				"D5 : " + D5 + " mm, D3 : " + D3 + ' mm, D1 : ' + D1 + " mm \n" +
+				"CM3 : " + CM3 + ' mm \n' +
+				"METHODE_DOIGTS : " + METHODE_DOIGTS + "\n" +
+				"POUCE : " + POUCE + "\n" +
+				"GRIFFE : " + GRIFFE + "\n" +
+				"PIED : " + PIED + "\n" +
+				"TIBIA : " + TIBIA + "\n" +
+				"QUEUE : " + QUEUE + "\n" +
+				"LONG_OREILLE : " + LONG_OREILLE + "\n" +
+				"LARG_OREILLE : " + LARG_OREILLE + "\n" +
+				"LONG_TRAGUS : " + LONG_TRAGUS + "\n" +
+				"LARG_TRAGUS : " + LARG_TRAGUS + "\n" +
+				"-----------------------------------" + "\n" +
+				"TESTICULES : " + TEST + "\n" +
+				"EPIDIDYMES : " + EPID + "\n" +
+				"TUNIQUE VAGINALE : " + TV + "\n" +
+				"TAILLE_GLANDES : " + TAILLE_GLANDES + "\n" +
+				"COULEUR_GLANDES : " + COULEUR_GLANDES + "\n" +
+				"GESTATION : " + GESTATION + "\n" +
+				"MAMELLES : " + MAMELLES + "\n" +
+				"EPIPHYSES : " + EPIPH + "\n" +
+				"CHIN_SPOT : " + CHIN_SPOT + "\n" +
+				"USURE_DENTS : " + USURE_DENTS + "\n" +
+				"-----------------------------------" + "\n" +
+				"BLESSURES : " + BLESSURES + "\n" +
+				"MARQUAGES : " + MARQUAGES + "\n" +
+				"PARASITES : " + PARASITES + "\n" +
+				"PUCES : " + PUCES + "\n" +
+				"TIQUES : " + TIQUES + "\n" +
+				"ACARIENS : " + ACARIENS + "\n" +
+				"NYCT : " + NYCT + "\n" +
+				"CIMEX : " + CIMEX + "\n" +
+				"----------------------------------------------------------------------------" + "\n" +
+				"COMMENTAIRES : " + COMMENT + "\n" +
+				"----------------------------------------------------------------------------" + "\n"
+			;
+			let textToBLOB = new Blob([record], {type: 'text/plain'});
+			let sFileName = 'Enregistrement_' + date + '_' + time + '_' + TAXON + '_' + SEXE + '.txt';
+			let newLink = document.createElement("a");
+			newLink.download = sFileName;
+			if (window.webkitURL != null) {
+				newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+			}
+			else {
+				newLink.href = window.URL.createObjectURL(textToBLOB);
+				newLink.style.display = "none";
+				document.body.appendChild(newLink);
+			}
+			newLink.click();
+		}
+		</script>
+  </body>
+</html>
